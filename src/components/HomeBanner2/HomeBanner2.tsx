@@ -77,7 +77,7 @@ const HomeBanner2 = () => {
     })
     .then(res => res.json())
     .then(data => {
-      console.log(data)
+      // console.log(data)
       if(data.ok){
         setData(data.data)
       }

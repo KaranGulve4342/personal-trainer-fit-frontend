@@ -74,29 +74,29 @@ const page = () => {
         {
             data && 
             <div className='workout'>
-                <h1 className='mainhead1'> {workout?.type} Day</h1>
-                <div className='workout__exercises'>
-                    {
-                        workout?.exercises.map((item: any, index: number)=>{
-                            return (
-                                <div className={
-                                    index % 2 === 0 ? 'workout__exercise' : 'workout__exercise workout__exercise--reverse'
-                                }>
-                                    <h3>{index+1}</h3>
-                                    <div className='workout__exercise__image'>
-                                        <img src={item.videoUrl} alt="" />
-                                    </div>
-                                    <div className='workout__exercise__content'>
-                                        <h2>{item.exercise}</h2>
-                                        <span>{item.sets} sets X {item.reps} reps</span>
-                                        <p>{item.description}</p>
-                                    </div>
+            <h1 className='mainhead1'> {workout?.type} Day</h1>
+            <div className='workout__exercises'>
+                {
+                    workout?.exercises.map((item: any, index: number)=>{
+                        return (
+                            <div className={
+                                index % 2 === 0 ? 'workout__exercise' : 'workout__exercise workout__exercise--reverse'
+                            }>
+                                <h3>{index+1}</h3>
+                                <div className='workout__exercise__image'>
+                                    <img src={item.videoUrl} alt="" />
                                 </div>
-                            )
-                        })
-                    }
-                </div>
+                                <div className='workout__exercise__content'>
+                                    <h2>{item.exercise}</h2>
+                                    <span>{item.sets} sets X {item.reps} reps</span>
+                                    <p>{item.description}</p>
+                                </div>
+                            </div>
+                        )
+                    })
+                }
             </div>
+        </div>
         }
         </>
     )

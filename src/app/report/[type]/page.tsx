@@ -72,6 +72,142 @@ const page = () => {
         else{
             alert('get data for other reports')
         }
+    }
+
+    React.useEffect(() => {
+        getDataForS1()
+    }, [])
+
+    const [showCalorieIntakePopup, setShowCalorieIntakePopup] = React.useState<boolean>(false)
+
+    return (
+        <div className='reportpage'>
+            {
+                dataS1 &&
+                <div className='s1'>
+                    {
+                        dataS1 &&
+                        <LineChart
+                            xAxis={[{
+                                id: 'Day',
+                                data: dataS1.xAxis.data,
+                                scaleType: dataS1.xAxis.scaleType,
+                                label: dataS1.xAxis.label,
+                                valueFormatter: (date: any) => {
+                                    return date.getDate();
+                                }
+                            }]}
+                            series={[
+                                {
+                                    data: dataS1.data,
+                                    label: dataS1.title,
+                                    color: dataS1.color,
+                                },
+                            ]}
+                            {...chartsParams}
+                        />
+                    }
+                </div>
+            }
+            {/* <div className='s2'>
+                {
+                    dataS1 &&
+                    <LineChart
+                        xAxis={[{
+                            id: 'Day',
+                            data: dataS1.xAxis.data,
+                            scaleType: dataS1.xAxis.scaleType,
+                            label: dataS1.xAxis.label,
+                            valueFormatter: (date: any) => {
+                                return date.getDate();
+                            }
+                        }]}
+                        series={[
+                            {
+                                data: dataS1.data,
+                                label: dataS1.title,
+                                color: dataS1.color,
+                            },
+                        ]}
+                        {...chartsParams}
+                    />
+                }
+            </div> */}
+
+            {/* <div className='s3'>
+                {
+                    dataS1 &&
+                    <LineChart
+                        xAxis={[{
+                            id: 'Day',
+                            data: dataS1.xAxis.data,
+                            scaleType: dataS1.xAxis.scaleType,
+                            label: dataS1.xAxis.label,
+                            valueFormatter: (date: any) => {
+                                return date.getDate();
+                            }
+                        }]}
+                        series={[
+                            {
+                                data: dataS1.data,
+                                label: dataS1.title,
+                                color: dataS1.color,
+                            },
+                        ]}
+                        {...chartsParams}
+                    />
+                }
+            </div> */}
+
+            {/* <div className='s4'>
+                {
+                    dataS1 &&
+                    <LineChart
+                        xAxis={[{
+                            id: 'Day',
+                            data: dataS1.xAxis.data,
+                            scaleType: dataS1.xAxis.scaleType,
+                            label: dataS1.xAxis.label,
+                            valueFormatter: (date: any) => {
+                                return date.getDate();
+                            }
+                        }]}
+                        series={[
+                            {
+                                data: dataS1.data,
+                                label: dataS1.title,
+                                color: dataS1.color,
+                            },
+                        ]}
+                        {...chartsParams}
+                    />
+                }
+            </div> */}
+            <button className='editbutton'
+                onClick={() => {
+                    if(pathname == '/report/Calorie%20Intake'){
+                        setShowCalorieIntakePopup(true)
+                    }
+                    // setShowCalorieIntakePopup(true)
+                    else{
+                        alert('show popup for other reports')
+                    }
+                }}
+            >
+                <AiFillEdit />
+            </button>
+
+            {
+                showCalorieIntakePopup &&
+
+                <CaloriIntakePopup setShowCalorieIntakePopup={setShowCalorieIntakePopup} />
+
+            }
+        </div>
+    )
+}
+
+export default page
 
 
 
@@ -149,133 +285,3 @@ const page = () => {
         //         scaleType: 'time'
         //     }
         // })
-    }
-
-    React.useEffect(() => {
-        getDataForS1()
-    }, [])
-
-    const [showCalorieIntakePopup, setShowCalorieIntakePopup] = React.useState<boolean>(false)
-
-    return (
-        <div className='reportpage'>
-            {
-                dataS1.length > 0 &&
-                <div className='s1'>
-                    {
-                        dataS1 &&
-                        <LineChart
-                            xAxis={[{
-                                id: 'Day',
-                                data: dataS1.xAxis.data,
-                                scaleType: dataS1.xAxis.scaleType,
-                                label: dataS1.xAxis.label,
-                                valueFormatter: (date: any) => {
-                                    return date.getDate();
-                                }
-                            }]}
-                            series={[
-                                {
-                                    data: dataS1.data,
-                                    label: dataS1.title,
-                                    color: dataS1.color,
-                                },
-                            ]}
-                            {...chartsParams}
-                        />
-                    }
-                </div>
-            }
-            <div className='s2'>
-                {
-                    dataS1 &&
-                    <LineChart
-                        xAxis={[{
-                            id: 'Day',
-                            data: dataS1.xAxis.data,
-                            scaleType: dataS1.xAxis.scaleType,
-                            label: dataS1.xAxis.label,
-                            valueFormatter: (date: any) => {
-                                return date.getDate();
-                            }
-                        }]}
-                        series={[
-                            {
-                                data: dataS1.data,
-                                label: dataS1.title,
-                                color: dataS1.color,
-                            },
-                        ]}
-                        {...chartsParams}
-                    />
-                }
-            </div>
-
-            <div className='s3'>
-                {
-                    dataS1 &&
-                    <LineChart
-                        xAxis={[{
-                            id: 'Day',
-                            data: dataS1.xAxis.data,
-                            scaleType: dataS1.xAxis.scaleType,
-                            label: dataS1.xAxis.label,
-                            valueFormatter: (date: any) => {
-                                return date.getDate();
-                            }
-                        }]}
-                        series={[
-                            {
-                                data: dataS1.data,
-                                label: dataS1.title,
-                                color: dataS1.color,
-                            },
-                        ]}
-                        {...chartsParams}
-                    />
-                }
-            </div>
-
-            <div className='s4'>
-                {
-                    dataS1 &&
-                    <LineChart
-                        xAxis={[{
-                            id: 'Day',
-                            data: dataS1.xAxis.data,
-                            scaleType: dataS1.xAxis.scaleType,
-                            label: dataS1.xAxis.label,
-                            valueFormatter: (date: any) => {
-                                return date.getDate();
-                            }
-                        }]}
-                        series={[
-                            {
-                                data: dataS1.data,
-                                label: dataS1.title,
-                                color: dataS1.color,
-                            },
-                        ]}
-                        {...chartsParams}
-                    />
-                }
-            </div>
-            <button className='editbutton'
-                onClick={() => {
-                    setShowCalorieIntakePopup(true)
-                }}
-            >
-                <AiFillEdit />
-            </button>
-
-            {
-                showCalorieIntakePopup &&
-
-                <CaloriIntakePopup setShowCalorieIntakePopup={setShowCalorieIntakePopup} />
-
-            }
-        </div>
-    )
-}
-
-export default page
